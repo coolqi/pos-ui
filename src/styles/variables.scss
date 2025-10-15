@@ -1,0 +1,39 @@
+:root {
+  // font size
+  --pos-ui-font-size-xs: 12px;
+  --pos-ui-font-size-sm: 14px;
+  --pos-ui-font-size-base: 16px;
+  --pos-ui-font-size-lg: 18px;
+  --pos-ui-font-size-xl: 20px;
+  --pos-ui-font-size-2xl: 24px;
+
+  // gap
+  --pos-ui-gap-xs: 4px;
+  --pos-ui-gap-sm: 8px;
+  --pos-ui-gap-base: 16px;
+  --pos-ui-gap-md: 24px;
+  --pos-ui-gap-lg: 32px;
+  --pos-ui-gap-xl: 40px;
+  --pos-ui-gap-2xl: 160px;
+
+  // border radius
+  --pos-ui-border-radius-xs: 4px;
+  --pos-ui-border-radius-sm: 8px;
+  --pos-ui-border-radius-base: 12px;
+  --pos-ui-border-radius-md: 16px;
+  --pos-ui-border-radius-lg: 24px;
+  --pos-ui-border-radius-xl: 32px;
+  --pos-ui-border-radius-2xl: 9999px;
+  --pos-ui-border-radius-round: 50%;
+
+  // function card size
+  --pos-ui-function-card-size-width-sm: 160px;
+  --pos-ui-function-card-size-height-sm: 128px;
+  --pos-ui-function-card-size-width: 200px;
+  --pos-ui-function-card-size-height: 200px;
+}
+
+// 响应式断点 - 专注桌面端
+$small-desktop: 1024px;
+$medium-desktop: 1366px;
+$large-desktop: 1920px;

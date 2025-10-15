@@ -1,0 +1,500 @@
+# POS UI 项目开发规范
+
+## 项目概述
+
+这是一个 React 组件库项目，使用 TypeScript + SCSS 开发，专注于桌面端（1024-1920px）的 POS 系统 UI 组件。
+
+## 技术栈
+
+- **包管理器**: pnpm（强制使用，不使用 npm 或 yarn）
+- **框架**: React 18+
+- **语言**: TypeScript
+- **样式**: SCSS + CSS Variables
+- **构建工具**: Vite
+- **文档工具**: Storybook
+- **主题系统**: React Context API
+
+## 代码组织规范
+
+### 目录结构
+
+```
+src/
+├── components/        # 纯组件（可复用的基础组件）
+│   ├── button/
+│   │   ├── index.tsx           # 组件逻辑
+│   │   ├── index.ts            # 导出文件
+│   │   ├── index.module.scss   # 组件样式
+│   │   └── Button.stories.tsx  # Storybook 文档
+│   └── ...
+├── blocks/           # 业务组件（组合多个纯组件的复杂组件）
+│   ├── userProfile/
+│   └── ...
+├── contexts/         # React Context
+├── hooks/           # 自定义 Hooks
+├── styles/          # 全局样式
+│   ├── index.scss        # 总入口（导出所有）
+│   ├── _functions.scss   # SCSS 函数
+│   ├── themes.scss    # 主题定义
+└── types/           # TypeScript 类型定义
+```
+
+### 命名规范
+
+- **文件夹**: 使用小驼峰命名（camelCase），如 `button`, `themeToggle`
+- **组件文件**: 使用 `index.tsx`（组件实现）+ `index.ts`（导出）+ `index.module.scss`（样式）
+- **Storybook**: 使用 `ComponentName.stories.tsx`，首字母大写
+- **组件名**: 使用 PascalCase，如 `Button`,
+- **Props 接口**: 使用 `ComponentNameProps`，如 `ButtonProps`
+
+## 组件开发规范
+
+### 组件必须支持的 Props
+
+**所有组件都必须支持以下 props**:
+```tsx
+interface BaseComponentProps {
+  className?: string;      // 允许用户自定义类名
+  style?: React.CSSProperties;  // 允许用户自定义内联样式
+}
+```
+
+### 组件模板
+
+```tsx
+import React from 'react';
+import styles from './index.module.scss';
+
+export interface ComponentNameProps extends React.HTMLAttributes<HTMLDivElement> {
+  // 组件特定的 props
+  variant?: 'primary' | 'default' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  // 必须包含
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export const ComponentName = React.forwardRef<HTMLDivElement, ComponentNameProps>(
+  (
+    {
+      variant = 'default',
+      size = 'medium',
+      className = '',
+      children,
+      ...rest
+    },
+    ref
+  ) => {
+    const classNames = [
+      styles.componentName,
+      styles[`componentName--${variant}`],
+      styles[`componentName--${size}`],
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    return (
+      <div ref={ref} className={classNames} {...rest}>
+        {children}
+      </div>
+    );
+  }
+);
+
+ComponentName.displayName = 'ComponentName';
+```
+
+### 导出规范
+
+每个组件文件夹需要 `index.ts` 导出文件：
+
+```tsx
+export { ComponentName } from './index.tsx';
+export type { ComponentNameProps } from './index.tsx';
+```
+
+主入口 `src/index.ts` 统一导出：
+
+```tsx
+// 导出组件和类型
+export { Button, IconButton, type ButtonProps, type IconButtonProps } from './components/button';
+```
+
+## 样式开发规范
+
+### CSS 变量命名
+
+**所有 CSS 变量必须使用 `pos-ui-` 前缀**，防止命名冲突：
+
+```scss
+:root {
+  --pos-ui-primary-color: #646cff;
+  --pos-ui-background-color: #ffffff;
+  --pos-ui-text-primary: #213547;
+  // ...
+}
+```
+
+### 尺寸单位
+
+- **固定尺寸使用 `px`**，不使用 `rem`
+- 项目专注桌面端（1024-1920px），不需要移动端适配
+- 不需要响应式自适应，使用固定像素值
+
+### SCSS 架构
+
+- **不要在组件中单独导入** `themes.scss`、`_functions.scss` 或 `mixins.scss`
+- Vite 已配置全局注入 `@use "@/styles/index.scss" as *;`
+- 直接在组件样式中使用 CSS 变量、SCSS 函数和 SCSS mixins
+
+```scss
+// ❌ 错误 - 不要手动导入
+@use '../../styles/themes.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+// ✅ 正确 - 直接使用（已全局注入）
+.button {
+  @include flex-center(var(--pos-ui-gap-sm)); // SCSS mixin
+  background-color: var(--pos-ui-primary-color); // CSS 变量
+  box-shadow: 0 2px 8px #{black(0.1)}; // SCSS 函数
+}
+```
+
+### SCSS 模块化
+
+- 使用 CSS Modules（`*.module.scss`）
+- 类名使用 BEM 风格：
+
+```scss
+.button {
+  // 基础样式
+  
+  // 修饰符
+  &--primary { }
+  &--small { }
+  
+  // 元素
+  &__icon { }
+  &__content { }
+}
+```
+
+### SCSS 函数
+
+项目提供了两个全局函数：
+
+```scss
+// 黑色透明度
+box-shadow: 0 2px 8px #{black(0.1)};
+
+// 白色透明度
+border: 1px solid #{white(0.5)};
+```
+
+### SCSS Mixins
+
+项目提供了以下全局 mixins（已通过 Vite 自动注入）：
+
+```scss
+// Flex 布局
+@include flex-center($gap: var(--pos-ui-gap-sm));
+@include flex-between($gap: var(--pos-ui-gap-sm));
+@include flex-gap($gap: var(--pos-ui-gap-sm), $direction: row);
+
+// 文本截断
+@include text-ellipsis(); // 单行截断
+@include text-ellipsis-multiline($lines: 2); // 多行截断
+@include text-truncate($symbol: '...'); // 自定义截断符号
+@include text-hidden(); // 隐藏溢出内容
+
+// Grid 布局
+@include grid-gap($columns: 1, $gap: var(--pos-ui-gap-sm));
+
+// 滚动条样式
+@include scrollbar($width: 6px, $track-color: transparent, $thumb-color: var(--pos-ui-border-color), $thumb-hover-color: var(--pos-ui-text-secondary));
+@include scrollbar-medium($thumb-color: var(--pos-ui-border-color), $thumb-hover-color: var(--pos-ui-text-secondary));
+```
+
+使用示例：
+
+```scss
+.card {
+  @include flex-between(16px); // Flex 两端对齐，间距 16px
+  
+  .title {
+    @include text-ellipsis(); // 单行截断
+  }
+  
+  .content {
+    @include scrollbar-medium(); // 滚动条样式
+  }
+}
+```
+
+## Storybook 规范
+
+### Story 组织原则
+
+**精简展示 - 尽可能将一个组件的所有样式写在一页**：
+
+```tsx
+export const AllVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', padding: '20px' }}>
+      {/* Fill 样式 */}
+      <div>
+        <h3>Fill Style</h3>
+        {/* 所有尺寸 */}
+      </div>
+      
+      {/* Outline 样式 */}
+      <div>
+        <h3>Outline Style</h3>
+        {/* 所有尺寸 */}
+      </div>
+      
+      {/* 其他变体 */}
+    </div>
+  ),
+};
+```
+
+### Story 模板
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { ComponentName } from './index';
+
+const meta = {
+  title: 'Components/ComponentName',  // 或 'Blocks/ComponentName'
+  component: ComponentName,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+} satisfies Meta<typeof ComponentName>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// 所有变体展示在一页
+export const AllVariants: Story = {
+  render: () => (
+    // ... 完整的展示页面
+  ),
+};
+
+// 交互式控制
+export const Interactive: Story = {
+  args: {
+    variant: 'primary',
+    size: 'medium',
+    children: 'Example',
+  },
+};
+```
+
+## 主题系统规范
+
+### 主题定义
+
+使用 CSS 变量实现主题切换：
+
+```scss
+// 浅色主题
+:root {
+  --pos-ui-primary-color: #646cff;
+  --pos-ui-background-color: #ffffff;
+  // ...
+}
+
+// 深色主题
+.dark {
+  --pos-ui-primary-color: #818cf8;
+  --pos-ui-background-color: #0f172a;
+  // ...
+}
+```
+
+### 主题使用
+
+```tsx
+import { ThemeProvider, useTheme } from 'pos-ui';
+
+// 应用级使用
+<ThemeProvider defaultTheme="light" enableLocalStorage={true}>
+  <App />
+</ThemeProvider>
+
+// 组件中使用
+const { theme, toggleTheme } = useTheme();
+```
+
+## 构建和发布规范
+
+### 按需加载配置
+
+- `package.json` 设置 `"sideEffects": false`
+- 配置 `exports` 字段支持子路径导入
+- Vite 配置 `manualChunks` 进行代码分割
+- 用户无需额外配置，开箱即用 Tree Shaking
+
+### 构建命令
+
+```bash
+# 开发
+pnpm dev
+
+# 构建组件库
+pnpm build:lib
+
+# Storybook
+pnpm storybook
+pnpm build-storybook
+
+# 发布
+pnpm publish
+```
+
+## TypeScript 规范
+
+### 类型导出
+
+```tsx
+// 同时导出组件和类型
+export { Button } from './index.tsx';
+export type { ButtonProps } from './index.tsx';
+```
+
+### 泛型和继承
+
+```tsx
+// 继承 HTML 元素属性
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'default' | 'danger';
+  // ...
+}
+
+// 使用 Omit 排除不需要的属性
+export interface IconButtonProps extends Omit<ButtonProps, 'children'> {
+  icon: React.ReactNode;
+}
+```
+
+### forwardRef
+
+所有组件都应该支持 ref：
+
+```tsx
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    return <button ref={ref} {...props} />;
+  }
+);
+
+Button.displayName = 'Button';
+```
+
+## 路径别名
+
+- 使用 `@` 作为 `src` 目录的别名
+- 已在 `vite.config.ts` 和 `tsconfig.app.json` 中配置
+
+```tsx
+// ✅ 使用别名
+import { black, white } from '@/styles/_functions.scss';
+import { Button } from '@/components/button';
+
+// ❌ 避免相对路径
+import { Button } from '../../components/button';
+```
+
+## 组件设计原则
+
+### 通用设计模式
+
+1. **变体（Variant）**: 组件的主要视觉样式（如 primary、default、danger）
+2. **样式类型（StyleType）**: 组件的填充方式（如 fill、outline）
+3. **尺寸（Size）**: 组件的大小（如 small、medium、large）
+4. **状态**: 禁用、加载、激活等状态
+
+### Button 组件示例
+
+```tsx
+<Button 
+  variant="primary"     // 变体
+  styleType="fill"      // 样式类型
+  size="medium"         // 尺寸
+  icon={<Icon />}       // 图标
+  iconPosition="left"   // 图标位置
+  rounded={false}       // 圆角
+  disabled={false}      // 状态
+  className="custom"    // 自定义类名
+  style={{ ... }}       // 自定义样式
+/>
+```
+
+## 代码质量
+
+### 最佳实践
+
+- 使用函数组件 + Hooks
+- 使用 `forwardRef` 支持 ref 传递
+- 使用 `displayName` 便于调试
+- Props 解构时提供默认值
+- 使用 TypeScript 严格模式
+- 组件要有良好的 JSDoc 注释
+
+### 避免的做法
+
+- ❌ 不要使用类组件
+- ❌ 不要混用 default export 和 named export（统一用 named export）
+- ❌ 不要在组件中硬编码颜色值（使用 CSS 变量）
+- ❌ 不要使用 `!important`（除非绝对必要）
+- ❌ 不要手动导入全局样式文件（已自动注入）
+
+## Git 规范
+
+### 忽略文件
+
+已配置 `.gitignore`:
+- `node_modules/`
+- `dist/`
+- `dist-ssr/`
+- `.env*`
+- `pnpm-lock.yaml`（如果需要版本控制，移除这一行）
+
+## 开发工作流
+
+1. **创建新组件**:
+   - 在 `components/` 或 `blocks/` 创建文件夹
+   - 创建 `index.tsx`、`index.ts`、`index.module.scss`
+   - 创建 `ComponentName.stories.tsx`
+
+2. **开发组件**:
+   - 运行 `pnpm storybook` 进行开发
+   - 确保所有变体都在 Story 中展示
+
+3. **更新导出**:
+   - 在 `src/index.ts` 添加导出
+   - 在 `vite.config.ts` 的 `lib.entry` 添加入口
+   - 在 `package.json` 的 `exports` 添加子路径
+
+4. **测试构建**:
+   - 运行 `pnpm build:lib`
+   - 检查 `dist/` 目录输出
+
+5. **发布**:
+   - 更新版本号
+   - 运行 `pnpm publish`
+
+## 注意事项
+
+- 项目专注于桌面端（1024-1920px），不考虑移动端适配
+- 使用 `px` 单位，不使用响应式布局
+- 所有组件必须支持 `className` 和 `style` 自定义
+- CSS 变量统一使用 `pos-ui-` 前缀
+- 强制使用 pnpm 作为包管理器
+- Storybook 展示要精简，尽量一页展示所有变体
+

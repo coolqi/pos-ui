@@ -1,0 +1,11 @@
+// SCSS 工具函数
+
+// 黑色透明度函数
+@function black($opacity) {
+  @return rgb(0 0 0 / #{$opacity});
+}
+
+// 白色透明度函数
+@function white($opacity) {
+  @return rgb(255 255 255 / #{$opacity});
+}

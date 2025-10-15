@@ -1,0 +1,71 @@
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 48px;
+  border: none;
+  border-radius: var(--pos-ui-border-radius-2xl);
+  background: transparent;
+  outline: none;
+  position: relative;
+  padding: 0;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 8px;
+  background-color: var(--pos-ui-icon-button-bg);
+  border-radius: var(--pos-ui-border-radius-lg);
+  position: relative;
+  box-shadow: 0 2px 0 0 rgb(255 255 255 / 2%);
+  overflow: hidden;
+}
+
+.label {
+  font-size: var(--pos-ui-font-size-xl);
+  line-height: 26px;
+  color: var(--pos-ui-text-primary);
+  transition: transform 0.3s ease-out;
+  &.light {
+    transform: translateX(40px);
+  }
+  &.dark {
+    transform: translateX(8px);
+  }
+}
+
+.thumb {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border-radius: var(--pos-ui-border-radius-round);
+  box-shadow: 0 2px 4px var(--pos-ui-shadow-sm), 0 1px 6px -1px var(--pos-ui-shadow-sm);
+  transition: transform 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transform: translateX(-1px);
+
+  &.light {
+    transform: translateX(-64px);
+  }
+
+  &.dark {
+    transform: translateX(0);
+    background-color: var(--pos-ui-icon-button-bg);
+  }
+}
+
+// 按压效果 (与 iconButton 保持一致)
+.themeToggle:active:not(:disabled) {
+  .track {
+    background-color: var(--pos-ui-icon-button-pressed-bg);
+  }
+}
+

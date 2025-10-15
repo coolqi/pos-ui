@@ -1,0 +1,90 @@
+// 基础单行截断（省略号）
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 单行截断（自定义截断符号）
+@mixin text-truncate($symbol: '...') {
+  overflow: hidden;
+  text-overflow: $symbol;
+  white-space: nowrap;
+}
+
+// 多行截断（省略号）
+@mixin text-ellipsis-multiline($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Grid 布局 + Gap
+@mixin grid-gap($columns: 1, $gap: var(--gap-sm)) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// ===== Flex 布局工具 =====
+
+@mixin flex-center($gap: var(--pos-ui-gap-sm)) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+}
+
+// Flex 两端对齐
+@mixin flex-between($gap: var(--pos-ui-gap-sm)) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gap;
+}
+
+@mixin flex-gap($gap: var(--pos-ui-gap-sm), $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+
+// ===== 工具类 =====
+
+// 隐藏溢出内容
+@mixin text-hidden {
+  overflow: hidden;
+  text-indent: -9999px;
+  white-space: nowrap;
+}
+
+// ===== 滚动条样式工具 =====
+
+// 基础滚动条样式
+@mixin scrollbar($width: 6px, $track-color: transparent, $thumb-color: var(--border-color), $thumb-hover-color: var(--text-secondary)) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: calc($width / 2);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $thumb-hover-color;
+  }
+}
+
+// 中等滚动条样式（推荐用于常规布局）
+@mixin scrollbar-medium($thumb-color: var(--border-color), $thumb-hover-color: var(--text-secondary)) {
+  @include scrollbar(6px, transparent, $thumb-color, $thumb-hover-color);
+}
