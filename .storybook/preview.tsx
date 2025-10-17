@@ -37,6 +37,17 @@ const preview: Preview = {
     },
 
     layout: 'centered',
+
+    // 设置故事排序和默认页面
+    options: {
+      storySort: {
+        order: [
+          'Components', 
+          ['Icon', 'Button', 'ThemeToggle'], // Icon 排在第一个
+          'Blocks'
+        ],
+      },
+    },
   },
 
   decorators: [

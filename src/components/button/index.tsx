@@ -9,6 +9,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   color?: 'cyan';
   /** 样式类型：outline or not */
   outline?: boolean;
+  /** outline 按钮按压时变为 fill 样式 */
+  solidOnPressed?: boolean;
   /** 按钮尺寸 */
   size?: 'small' | 'medium' | 'large';
   /** 图标 */
@@ -30,6 +32,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'default',
       color,
       outline = false,
+      solidOnPressed = false,
       size = 'medium',
       icon,
       iconPosition = 'left',
@@ -45,6 +48,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       styles.button,
       color ? styles[`button--color-${color}`] : styles[`button--${variant}`],
       styles[`button--${outline ? 'outline' : 'fill'}`],
+      solidOnPressed && outline && styles['button--solid-on-pressed'],
       styles[`button--${size}`],
       rounded && styles['button--rounded'],
       className,

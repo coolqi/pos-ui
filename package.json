@@ -1,6 +1,6 @@
 {
   "name": "pos-ui-react",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.6",
   "description": "A React component library with theme support",
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -25,6 +25,11 @@
       "types": "./dist/components/themeToggle.d.ts",
       "import": "./dist/components/themeToggle.es.js",
       "require": "./dist/components/themeToggle.cjs.js"
+    },
+    "./components/icon": {
+      "types": "./dist/components/icon.d.ts",
+      "import": "./dist/components/icon.es.js",
+      "require": "./dist/components/icon.cjs.js"
     },
     "./blocks/userProfile": {
       "types": "./dist/blocks/userProfile.d.ts",
@@ -88,6 +93,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
     "vite": "^7.1.7",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
     "vitest": "^3.2.4"
   }
 }

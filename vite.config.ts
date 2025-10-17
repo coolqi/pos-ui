@@ -43,6 +43,7 @@ export default defineConfig(({ mode }) => {
             // 纯组件 - 支持按需导入
             'components/button': resolve(__dirname, 'src/components/button/index.ts'),
             'components/themeToggle': resolve(__dirname, 'src/components/themeToggle/index.ts'),
+            'components/icon': resolve(__dirname, 'src/components/icon/index.ts'),
             // 业务组件
             'blocks/userProfile': resolve(__dirname, 'src/blocks/userProfile/index.ts'),
             // 主题相关
@@ -61,14 +62,15 @@ export default defineConfig(({ mode }) => {
               'react-dom': 'ReactDOM'
             },
             // 启用代码分割，实现真正的按需加载
-            manualChunks: (id) => {
-              // 将每个组件分割成独立的chunk
-              if (id.includes('components/button')) return 'button';
-              if (id.includes('components/themeToggle')) return 'themeToggle';
-              if (id.includes('blocks/userProfile')) return 'userProfile';
-              if (id.includes('contexts/theme')) return 'theme';
-              if (id.includes('hooks/useTheme')) return 'useTheme';
-            }
+                manualChunks: (id) => {
+                  // 将每个组件分割成独立的chunk
+                  if (id.includes('components/button')) return 'button';
+                  if (id.includes('components/themeToggle')) return 'themeToggle';
+                  if (id.includes('components/icon')) return 'icon';
+                  if (id.includes('blocks/userProfile')) return 'userProfile';
+                  if (id.includes('contexts/theme')) return 'theme';
+                  if (id.includes('hooks/useTheme')) return 'useTheme';
+                }
           }
         }
       }

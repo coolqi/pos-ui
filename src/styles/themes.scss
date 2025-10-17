@@ -24,6 +24,8 @@
   --pos-ui-btn-secondary-hover: #e6f1ff;
   --pos-ui-btn-default-border: #d9d9d9;
   --pos-ui-btn-default-bg: #fff;
+  --pos-ui-btn-mix-bg-hover: #{black(15%)};
+  --pos-ui-btn-danger-shadow: 0 2px 0 0 rgb(255 38 6 / 6%);
 
   // color button - cyan
   --pos-ui-color-cyan: #13c2c2;
@@ -69,6 +71,9 @@
   --pos-ui-btn-secondary-hover: rgb(77 112 255 / 20%);
   --pos-ui-btn-default-border: #{white(8%)};
   --pos-ui-btn-default-bg: #{white(8%)};
+  --pos-ui-btn-mix-bg-hover: #{white(18%)};
+  --pos-ui-btn-danger-shadow: 0 2px 0 0 rgb(255 38 6 / 6%);
+
   // color button - cyan
   --pos-ui-color-cyan: #13a8a8;
   --pos-ui-color-cyan-hover: #138585;

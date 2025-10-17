@@ -63,11 +63,23 @@ export const AllVariants: Story = {
         <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Outline Style</h3>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
           <Button variant="primary" outline>Primary</Button>
-          <Button variant="secondary" outline>Secondary</Button>
           <Button color='cyan' outline>Cyan</Button>
-          <Button variant="default" outline>Default</Button>
+          <Button variant="mix" outline>Mix</Button>
           <Button variant="danger" outline>Danger</Button>
           <Button variant="primary" outline disabled>Disabled</Button>
+        </div>
+      </div>
+
+      {/* Outline with Solid on Pressed */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Outline - Solid on Pressed</h3>
+        <p style={{ marginBottom: '12px', fontSize: '14px', color: 'var(--pos-ui-text-secondary)' }}>
+          按压时变为填充样式
+        </p>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <Button variant="primary" outline solidOnPressed>Primary</Button>
+          <Button color='cyan' outline solidOnPressed>Cyan</Button>
+          <Button variant="danger" outline solidOnPressed>Danger</Button>
         </div>
       </div>
 
