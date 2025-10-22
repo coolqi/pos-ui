@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import ThemeToggle from './index';
-import { ThemeProvider } from '../../contexts/ThemeContext';
+import { ThemeProvider } from '@/contexts/ThemeContext';
+import { useState } from 'react';
 
 const meta = {
   title: 'Components/ThemeToggle',
@@ -15,7 +15,24 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 所有变体展示在一页
+// 受控模式示例组件
+const ControlledExample = () => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <p style={{ fontSize: '14px', color: 'var(--pos-ui-text-secondary)' }}>
+        当前主题: {theme}
+      </p>
+      <ThemeToggle 
+        value={theme} 
+        onChange={setTheme}
+      />
+    </div>
+  );
+};
+
+// 所有变体展示
 export const AllVariants: Story = {
   render: () => (
     <ThemeProvider>
@@ -42,65 +59,23 @@ export const AllVariants: Story = {
           <ControlledExample />
         </div>
 
-        {/* 禁用状态 */}
+        {/* 不同尺寸 */}
         <div>
           <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>
-            禁用状态
+            不同尺寸
           </h3>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-            <ThemeToggle value="light" disabled />
-            <ThemeToggle value="dark" disabled />
-          </div>
-        </div>
-
-        {/* 自定义样式 */}
-        <div>
-          <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>
-            自定义样式
-          </h3>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-            <ThemeToggle 
-              className="custom-toggle"
-              style={{ 
-                border: '2px solid var(--pos-ui-primary-color)',
-                borderRadius: '30px'
-              }} 
-            />
-          </div>
-        </div>
-
-        {/* 使用说明 */}
-        <div style={{ 
-          marginTop: '32px', 
-          padding: '20px', 
-          backgroundColor: 'var(--pos-ui-surface-color)',
-          borderRadius: '8px',
-          fontSize: '14px',
-          lineHeight: '1.6'
-        }}>
-          <h4 style={{ marginBottom: '12px', fontSize: '16px', fontWeight: '600' }}>使用方式</h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div>
-              <strong>非受控模式：</strong>
-              <code style={{ 
-                marginLeft: '8px', 
-                padding: '2px 6px', 
-                backgroundColor: 'var(--pos-ui-background-color)',
-                borderRadius: '4px'
-              }}>
-                &lt;ThemeToggle /&gt;
-              </code>
+          <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <ThemeToggle size="small" />
+              <span style={{ fontSize: '12px' }}>Small</span>
             </div>
-            <div>
-              <strong>受控模式：</strong>
-              <code style={{ 
-                marginLeft: '8px', 
-                padding: '2px 6px', 
-                backgroundColor: 'var(--pos-ui-background-color)',
-                borderRadius: '4px'
-              }}>
-                &lt;ThemeToggle value=&#123;theme&#125; onChange=&#123;setTheme&#125; /&gt;
-              </code>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <ThemeToggle size="medium" />
+              <span style={{ fontSize: '12px' }}>Medium</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+              <ThemeToggle size="large" />
+              <span style={{ fontSize: '12px' }}>Large</span>
             </div>
           </div>
         </div>
@@ -109,23 +84,19 @@ export const AllVariants: Story = {
   ),
 };
 
-// 受控模式示例组件
-function ControlledExample() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <ThemeToggle value={theme} onChange={setTheme} />
-      <div style={{ 
-        padding: '12px', 
-        backgroundColor: 'var(--pos-ui-surface-color)',
-        borderRadius: '6px',
-        fontSize: '14px'
-      }}>
-        当前主题: <strong>{theme}</strong>
+// 交互式控制
+export const Interactive: Story = {
+  render: () => (
+    <ThemeProvider>
+      <div style={{ padding: '20px' }}>
+        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>
+          主题切换器
+        </h3>
+        <p style={{ marginBottom: '16px', fontSize: '14px', color: 'var(--pos-ui-text-secondary)' }}>
+          点击切换全局主题
+        </p>
+        <ThemeToggle />
       </div>
-    </div>
-  );
-}
-
-
+    </ThemeProvider>
+  ),
+};

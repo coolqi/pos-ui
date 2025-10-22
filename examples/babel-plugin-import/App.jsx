@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider, Button, Card, ThemeToggle } from 'pos-ui';
+import { ThemeProvider, Button, Card, ThemeToggle } from 'pos-ui-react';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Card title="卡片标题" subtitle="卡片副标题">
           <p>这是卡片内容。使用 babel-plugin-import 配置后，</p>
           <p>可以像这样简洁地导入组件：</p>
-          <pre>{`import { Button, Card, ThemeToggle } from 'pos-ui';`}</pre>
+          <pre>{`import { Button, Card, ThemeToggle } from 'pos-ui-react';`}</pre>
           <p>构建工具会自动转换为按需导入，只加载使用的组件。</p>
         </Card>
       </div>

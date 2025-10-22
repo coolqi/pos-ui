@@ -1,0 +1,95 @@
+.functionCard {
+  width: 200px;
+  height: 160px;
+  background-color: var(--pos-ui-bg-color);
+  border: none;
+  border-bottom: 4px solid var(--pos-ui-btn-default-border);
+  border-radius: var(--pos-ui-border-radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  transition: all 0.1s ease;
+  position: relative;
+  user-select: none;
+  outline: none;
+  cursor: pointer;
+
+  &.sm {
+    width: 120px;
+    height: 100px;
+    padding: 16px;
+    border-radius: var(--pos-ui-border-radius-md);
+    flex-shrink: 0;
+  }
+
+  &.lg {
+    width: 240px;
+    height: 200px;
+    padding: 40px;
+  }
+
+  // 只保留pressed效果
+  &:active:not(:disabled) {
+    background-color: var(--pos-ui-bg-secondary);
+    transform: translateY(1px);
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .cardIcon {
+    color: var(--pos-ui-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:empty {
+      display: none;
+    }
+
+    &.lg {
+      width: 64px;
+      height: 64px;
+    }
+
+    &.sm {
+      width: 36px;
+      height: 36px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .cardTitle {
+    width: 100%;
+    text-align: left;
+    font-weight: 500;
+    color: var(--pos-ui-text-primary);
+    margin: 0;
+    
+    &.lg {
+      font-size: 30px;
+      line-height: 38px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    &.sm {
+      font-size: var(--pos-ui-font-size-base);
+      line-height: 24px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      max-height: 48px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Babel Plugin Import 示例
 
-这个示例展示了如何使用 `babel-plugin-import` 实现 `import { Button } from 'pos-ui'` 的按需加载。
+这个示例展示了如何使用 `babel-plugin-import` 实现 `import { Button } from 'pos-ui-react'` 的按需加载。
 
 ## 配置步骤
 
@@ -17,7 +17,7 @@ npm install -D babel-plugin-import
 ### 3. 使用组件
 
 ```jsx
-import { Button, Card, ThemeToggle } from 'pos-ui';
+import { Button, Card, ThemeToggle } from 'pos-ui-react';
 ```
 
 ## 转换效果
@@ -25,7 +25,7 @@ import { Button, Card, ThemeToggle } from 'pos-ui';
 ### 转换前
 
 ```jsx
-import { Button, Card, ThemeToggle } from 'pos-ui';
+import { Button, Card, ThemeToggle } from 'pos-ui-react';
 ```
 
 ### 转换后

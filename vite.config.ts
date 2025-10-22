@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
               if (filename.includes('src/styles/')) {
                 return content;
               }
-              // 在其他 SCSS 文件中自动注入 SCSS 函数、mixins 和变量
+              // 在其他 SCSS 文件中自动注入 SCSS 函数 和变量
               return `@use "@/styles/index.scss" as *;\n${content}`;
             }
           }
@@ -44,8 +44,9 @@ export default defineConfig(({ mode }) => {
             'components/button': resolve(__dirname, 'src/components/button/index.ts'),
             'components/themeToggle': resolve(__dirname, 'src/components/themeToggle/index.ts'),
             'components/icon': resolve(__dirname, 'src/components/icon/index.ts'),
-            // 业务组件
-            'blocks/userProfile': resolve(__dirname, 'src/blocks/userProfile/index.ts'),
+            'components/toast': resolve(__dirname, 'src/components/toast/index.ts'),
+            // 业务组件 (Blocks)
+            'blocks/functionCard': resolve(__dirname, 'src/blocks/functionCard/index.ts'),
             // 主题相关
             'contexts/theme': resolve(__dirname, 'src/contexts/ThemeContext.tsx'),
             'hooks/useTheme': resolve(__dirname, 'src/hooks/useTheme.tsx'),
@@ -67,7 +68,8 @@ export default defineConfig(({ mode }) => {
                   if (id.includes('components/button')) return 'button';
                   if (id.includes('components/themeToggle')) return 'themeToggle';
                   if (id.includes('components/icon')) return 'icon';
-                  if (id.includes('blocks/userProfile')) return 'userProfile';
+                  if (id.includes('components/toast')) return 'toast';
+                  if (id.includes('blocks/functionCard')) return 'functionCard';
                   if (id.includes('contexts/theme')) return 'theme';
                   if (id.includes('hooks/useTheme')) return 'useTheme';
                 }
@@ -93,7 +95,7 @@ export default defineConfig(({ mode }) => {
             if (filename.includes('src/styles/')) {
               return content;
             }
-            // 在其他 SCSS 文件中自动注入 SCSS 函数、mixins 和变量
+            // 在其他 SCSS 文件中自动注入 SCSS 函数 和变量
             return `@use "@/styles/index.scss" as *;\n${content}`;
           }
         }

@@ -44,7 +44,8 @@ const preview: Preview = {
         order: [
           'Components', 
           ['Icon', 'Button', 'ThemeToggle'], // Icon 排在第一个
-          'Blocks'
+          'Blocks',
+          ['FunctionCard'] // FunctionCard 排在 Blocks 第一个
         ],
       },
     },

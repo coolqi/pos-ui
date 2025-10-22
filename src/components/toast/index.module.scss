@@ -1,0 +1,199 @@
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--pos-ui-bg-color);
+  border: 2px solid;
+  border-radius: 8px;
+  box-shadow: 0 9px 28px 8px #{black(5%)},
+  0 3px 6px -4px #{black(12%)};
+  min-width: 320px;
+  max-width: 640px;
+  position: relative;
+
+  // 当只有一个内容时居中对齐
+  &--single-content {
+    align-items: center;
+  }
+
+  // 无边框样式
+  &--no-outline {
+    border-color: transparent !important;
+  }
+
+  // 位置样式
+  &--top-left {
+    // 顶部左侧：从左侧滑入
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  &--top-center {
+    // 顶部居中：从上往下出现
+    animation: slideInTop 0.3s ease-out;
+  }
+
+  &--top-right {
+    // 顶部右侧：从右侧滑入
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  &--bottom-left {
+    // 底部左侧：从左侧滑入
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  &--bottom-center {
+    // 底部居中：从下方滑入
+    animation: slideInBottom 0.3s ease-out;
+  }
+
+  &--bottom-right {
+    // 底部右侧：从右侧滑入
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    width: 556px;
+    flex: 1;
+    color: var(--pos-ui-text-primary);
+  }
+
+  &__text {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+    width: 556px;
+    flex: 1;
+    color: var(--pos-ui-text-primary);
+    word-wrap: break-word;
+  }
+
+  &__close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--pos-ui-text-primary);
+    transition: color 0.2s;
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .toast__title {
+    color: var(--pos-ui-text-primary);
+  }
+
+  // Error 样式
+  &--error {
+    border-color: var(--pos-ui-danger-color);
+    background-color: var(--pos-ui-danger-color-bg-pressed);
+
+    .toast__icon {
+      color: var(--pos-ui-danger-color);
+    }
+  }
+
+  // Success 样式
+  &--success {
+    border-color: var(--pos-ui-success-color);
+    background-color: var(--pos-ui-success-color-bg);
+
+    .toast__icon {
+      color: var(--pos-ui-success-color);
+    }
+  }
+
+  // Warning 样式
+  &--warning {
+    border-color: var(--pos-ui-warning-color);
+    background-color: var(--pos-ui-warning-color-bg);
+
+    .toast__icon {
+      color: var(--pos-ui-warning-color);
+    }
+  }
+
+  // Info 样式
+  &--info {
+    border-color: var(--pos-ui-primary-color);
+    background-color: var(--pos-ui-info-color-bg);
+
+    .toast__icon {
+      color: var(--pos-ui-primary-color);
+    }
+  }
+}
+
+// 动画关键帧
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

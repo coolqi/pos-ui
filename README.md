@@ -27,7 +27,7 @@ yarn add pos-ui
 
 ```tsx
 import React from 'react';
-import { ThemeProvider, Button, Card } from 'pos-ui';
+import { ThemeProvider, Button, Card } from 'pos-ui-react';
 
 function App() {
   return (
@@ -50,7 +50,7 @@ function App() {
 
 ```tsx
 import React from 'react';
-import { ThemeProvider, useTheme, Button } from 'pos-ui';
+import { ThemeProvider, useTheme, Button } from 'pos-ui-react';
 
 // 自定义主题切换按钮
 function MyThemeToggle() {
@@ -197,7 +197,7 @@ function App() {
 
 ```tsx
 // 用户这样写
-import { Button, Card } from 'pos-ui';
+import { Button, Card } from 'pos-ui-react';
 
 // 构建工具会自动优化，只打包使用的组件
 // 未使用的组件不会被包含在最终bundle中
@@ -236,7 +236,7 @@ import { Button, Card } from 'pos-ui';
 #### 自动样式导入（推荐）
 
 ```tsx
-import { Button, Card } from 'pos-ui';
+import { Button, Card } from 'pos-ui-react';
 // ✅ 样式自动包含，无需额外导入
 ```
 
@@ -249,7 +249,7 @@ import { Button, Card } from 'pos-ui';
 import 'pos-ui/styles';
 
 // 方式2: 只导入组件，不导入样式
-import { Button, Card } from 'pos-ui';
+import { Button, Card } from 'pos-ui-react';
 // 然后手动导入样式
 import 'pos-ui/dist/pos-ui.css';
 ```

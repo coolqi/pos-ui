@@ -3,7 +3,7 @@
 :root {
   // 浅色主题
   --pos-ui-primary-color: #134CEB;
-  --pos-ui-primary-hover: #0632C4;
+  --pos-ui-primary-pressed: #0632C4;
   --pos-ui-bg-color: #fff;
   // text
   --pos-ui-text-primary: #{black(88%)};
@@ -18,13 +18,11 @@
 
   // button
   --pos-ui-btn-primary-shadow: 0 2px 0 0 rgb(5 145 255 / 10%);
-  --pos-ui-btn-primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --pos-ui-btn-primary-hover: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
   --pos-ui-btn-secondary-bg: #e6f1ff;
-  --pos-ui-btn-secondary-hover: #e6f1ff;
+  --pos-ui-btn-secondary-pressed: #e6f1ff;
   --pos-ui-btn-default-border: #d9d9d9;
   --pos-ui-btn-default-bg: #fff;
-  --pos-ui-btn-mix-bg-hover: #{black(15%)};
+  --pos-ui-btn-mix-bg-pressed: #{black(15%)};
   --pos-ui-btn-danger-shadow: 0 2px 0 0 rgb(255 38 6 / 6%);
 
   // color button - cyan
@@ -44,15 +42,18 @@
 
   // 状态颜色
   --pos-ui-success-color: #52c41a;
+  --pos-ui-success-color-bg: #f6ffed;
   --pos-ui-warning-color: #faad14;
+  --pos-ui-warning-color-bg: #fffbe6;
   --pos-ui-danger-color: #f5222d;
   --pos-ui-danger-color-pressed: #cf1322;
   --pos-ui-danger-color-bg-pressed: #fff1f0;
+  --pos-ui-info-color-bg: #e6f1ff;
 }
 
 [data-theme='dark'] {
   --pos-ui-primary-color: #4d70ff;
-  --pos-ui-primary-hover: rgb(77 112 255 / 6%);
+  --pos-ui-primary-pressed: rgb(77 112 255 / 6%);
   --pos-ui-bg-color: #1a1a1a;
   --pos-ui-text-primary: #{white(85%)};
   --pos-ui-text-secondary: #b0b0b0;
@@ -65,13 +66,11 @@
   --pos-ui-shadow-light: 0 4px 8px #{white(30%)};
     // button
   --pos-ui-btn-primary-shadow: 0 2px 0 0 rgb(5 145 255 / 10%);
-  --pos-ui-btn-primary-bg: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  --pos-ui-btn-primary-hover: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
   --pos-ui-btn-secondary-bg: rgb(77 112 255 / 10%);
-  --pos-ui-btn-secondary-hover: rgb(77 112 255 / 20%);
+  --pos-ui-btn-secondary-pressed: rgb(77 112 255 / 20%);
   --pos-ui-btn-default-border: #{white(8%)};
   --pos-ui-btn-default-bg: #{white(8%)};
-  --pos-ui-btn-mix-bg-hover: #{white(18%)};
+  --pos-ui-btn-mix-bg-pressed: #{white(18%)};
   --pos-ui-btn-danger-shadow: 0 2px 0 0 rgb(255 38 6 / 6%);
 
   // color button - cyan
@@ -89,8 +88,11 @@
 
     // 状态颜色
   --pos-ui-success-color: #49aa19;
+  --pos-ui-success-color-bg: rgb(73 170 25 / 10%);
   --pos-ui-warning-color: #d89614;
+  --pos-ui-warning-color-bg: rgb(216 150 20 / 10%);
   --pos-ui-danger-color: #e84749;
   --pos-ui-danger-color-pressed: rgb(232 71 73 / 60%);
   --pos-ui-danger-color-bg-pressed: rgb(232 71 73 / 10%);
+  --pos-ui-info-color-bg: rgb(77 112 255 / 10%);
 }

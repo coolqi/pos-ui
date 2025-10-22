@@ -1,5 +1,3 @@
-// 使用 @forward 来转发 mixins、函数和变量，使它们在被 @use 时可用
-@forward './mixins.scss';
 @forward './_functions.scss';
 @forward './variables.scss';
 

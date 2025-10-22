@@ -3,7 +3,7 @@ module.exports = {
     [
       'import',
       {
-        libraryName: 'pos-ui',
+        libraryName: 'pos-ui-react',
         libraryDirectory: '',
         customName: (name) => {
           const componentMap = {
@@ -19,7 +19,7 @@ module.exports = {
         },
         style: false, // 不自动导入样式
       },
-      'pos-ui'
+      'pos-ui-react'
     ]
   ]
 };

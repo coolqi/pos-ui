@@ -144,18 +144,16 @@ export { Button, IconButton, type ButtonProps, type IconButtonProps } from './co
 
 ### SCSS 架构
 
-- **不要在组件中单独导入** `themes.scss`、`_functions.scss` 或 `mixins.scss`
+- **不要在组件中单独导入** `themes.scss`或`_functions.scss`
 - Vite 已配置全局注入 `@use "@/styles/index.scss" as *;`
 - 直接在组件样式中使用 CSS 变量、SCSS 函数和 SCSS mixins
 
 ```scss
 // ❌ 错误 - 不要手动导入
 @use '../../styles/themes.scss' as *;
-@use '../../styles/mixins.scss' as *;
 
 // ✅ 正确 - 直接使用（已全局注入）
 .button {
-  @include flex-center(var(--pos-ui-gap-sm)); // SCSS mixin
   background-color: var(--pos-ui-primary-color); // CSS 变量
   box-shadow: 0 2px 8px #{black(0.1)}; // SCSS 函数
 }
@@ -190,46 +188,6 @@ box-shadow: 0 2px 8px #{black(0.1)};
 
 // 白色透明度
 border: 1px solid #{white(0.5)};
-```
-
-### SCSS Mixins
-
-项目提供了以下全局 mixins（已通过 Vite 自动注入）：
-
-```scss
-// Flex 布局
-@include flex-center($gap: var(--pos-ui-gap-sm));
-@include flex-between($gap: var(--pos-ui-gap-sm));
-@include flex-gap($gap: var(--pos-ui-gap-sm), $direction: row);
-
-// 文本截断
-@include text-ellipsis(); // 单行截断
-@include text-ellipsis-multiline($lines: 2); // 多行截断
-@include text-truncate($symbol: '...'); // 自定义截断符号
-@include text-hidden(); // 隐藏溢出内容
-
-// Grid 布局
-@include grid-gap($columns: 1, $gap: var(--pos-ui-gap-sm));
-
-// 滚动条样式
-@include scrollbar($width: 6px, $track-color: transparent, $thumb-color: var(--pos-ui-border-color), $thumb-hover-color: var(--pos-ui-text-secondary));
-@include scrollbar-medium($thumb-color: var(--pos-ui-border-color), $thumb-hover-color: var(--pos-ui-text-secondary));
-```
-
-使用示例：
-
-```scss
-.card {
-  @include flex-between(16px); // Flex 两端对齐，间距 16px
-  
-  .title {
-    @include text-ellipsis(); // 单行截断
-  }
-  
-  .content {
-    @include scrollbar-medium(); // 滚动条样式
-  }
-}
 ```
 
 ## Storybook 规范
@@ -320,7 +278,7 @@ export const Interactive: Story = {
 ### 主题使用
 
 ```tsx
-import { ThemeProvider, useTheme } from 'pos-ui';
+import { ThemeProvider, useTheme } from 'pos-ui-react';
 
 // 应用级使用
 <ThemeProvider defaultTheme="light" enableLocalStorage={true}>

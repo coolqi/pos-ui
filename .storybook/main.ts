@@ -38,7 +38,7 @@ const config: StorybookConfig = {
             if (filename.includes('src/styles/')) {
               return content;
             }
-            // 在其他 SCSS 文件中自动注入 SCSS 函数、mixins 和变量
+            // 在其他 SCSS 文件中自动注入 SCSS 和变量
             return `@use "@/styles/index.scss" as *;\n${content}`;
           }
         },
