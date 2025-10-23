@@ -139,8 +139,9 @@ export { Button, IconButton, type ButtonProps, type IconButtonProps } from './co
 ### 尺寸单位
 
 - **固定尺寸使用 `px`**，不使用 `rem`
-- 项目专注桌面端（1024-1920px），不需要移动端适配
-- 不需要响应式自适应，使用固定像素值
+- **项目专注桌面端（1024-1920px）**，不考虑移动端适配
+- **不需要响应式设计**，使用固定像素值
+- **禁止使用媒体查询**，所有组件都基于桌面端设计
 
 ### SCSS 架构
 
@@ -370,6 +371,31 @@ import { Button } from '../../components/button';
 
 ## 组件设计原则
 
+### 组件复用原则
+
+**优先使用已有组件**：
+- 新组件中如果需要按钮，优先使用 `Button` 组件
+- 新组件中如果需要图标，优先使用 `Icon` 组件
+- 新组件中如果需要主题切换，优先使用 `ThemeToggle` 组件
+- 新组件中如果需要提示，优先使用 `Toast` 组件
+- 新组件中如果需要模态框，优先使用 `Modal` 组件
+
+```tsx
+// ✅ 正确 - 使用已有组件
+import { Button } from '../button';
+import { Icon } from '../icon';
+
+<Button variant="primary" size="small" onClick={handleClick}>
+  <Icon name="check" size={16} />
+  Confirm
+</Button>
+
+// ❌ 错误 - 不要重新实现按钮
+<button className="custom-button" onClick={handleClick}>
+  Custom Button
+</button>
+```
+
 ### 通用设计模式
 
 1. **变体（Variant）**: 组件的主要视觉样式（如 primary、default、danger）
@@ -429,6 +455,7 @@ import { Button } from '../../components/button';
    - 在 `components/` 或 `blocks/` 创建文件夹
    - 创建 `index.tsx`、`index.ts`、`index.module.scss`
    - 创建 `ComponentName.stories.tsx`
+   - **优先使用已有组件**：如果新组件需要按钮、图标等，优先导入和使用已有的组件
 
 2. **开发组件**:
    - 运行 `pnpm storybook` 进行开发
@@ -447,12 +474,31 @@ import { Button } from '../../components/button';
    - 更新版本号
    - 运行 `pnpm publish`
 
+## 桌面端设计规范
+
+### 屏幕尺寸要求
+- **目标设备**: 桌面端显示器（1024-1920px 宽度）
+- **设计原则**: 固定像素值，不使用响应式布局
+- **禁止移动端适配**: 不考虑手机、平板等移动设备
+- **禁止媒体查询**: 不使用 `@media` 规则
+
+### 组件尺寸标准
+- **Modal 组件**: Small(400px), Medium(500px), Large(600px)
+- **Button 组件**: 固定高度和间距，不随屏幕变化
+- **所有组件**: 使用 `px` 单位，不使用 `rem` 或 `em`
+
+### 布局原则
+- **固定布局**: 所有组件尺寸和间距都是固定的
+- **桌面端优化**: 针对鼠标交互和键盘导航优化
+- **无响应式**: 不提供移动端适配的样式
+
 ## 注意事项
 
-- 项目专注于桌面端（1024-1920px），不考虑移动端适配
-- 使用 `px` 单位，不使用响应式布局
-- 所有组件必须支持 `className` 和 `style` 自定义
-- CSS 变量统一使用 `pos-ui-` 前缀
-- 强制使用 pnpm 作为包管理器
-- Storybook 展示要精简，尽量一页展示所有变体
+- **项目专注于桌面端（1024-1920px）**，不考虑移动端适配
+- **使用 `px` 单位**，不使用响应式布局
+- **所有组件必须支持** `className` 和 `style` 自定义
+- **CSS 变量统一使用** `pos-ui-` 前缀
+- **强制使用 pnpm** 作为包管理器
+- **Storybook 展示要精简**，尽量一页展示所有变体
+- **优先使用已有组件**：新组件中需要按钮、图标等时，优先使用组件库中已有的组件，避免重复实现
 

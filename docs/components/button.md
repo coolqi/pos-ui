@@ -21,9 +21,9 @@ group:
 
 ## 代码演示
 
-### 按钮类型
+### 基础用法
 
-按钮有多种类型：主按钮、次按钮、虚线按钮、文本按钮、链接按钮等。
+按钮有多种变体和样式类型。
 
 ```tsx
 import { Button } from 'pos-ui-react';
@@ -31,12 +31,10 @@ import { Button } from 'pos-ui-react';
 export default () => (
   <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
     <Button variant="primary">Primary</Button>
-    <Button variant="default">Default</Button>
     <Button variant="secondary">Secondary</Button>
-    <Button variant="dashed">Dashed</Button>
-    <Button variant="text">Text</Button>
-    <Button variant="link">Link</Button>
+    <Button variant="default">Default</Button>
     <Button variant="danger">Danger</Button>
+    <Button variant="mix">Mix</Button>
   </div>
 );
 ```
@@ -169,9 +167,27 @@ export default () => (
 import { Button } from 'pos-ui-react';
 
 export default () => (
-  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-    <Button variant="primary" color="cyan">Cyan Primary</Button>
-    <Button variant="primary" color="cyan" outline>Cyan Outline</Button>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    {/* Cyan 主题 */}
+    <div>
+      <h4 style={{ marginBottom: '8px' }}>Cyan 主题</h4>
+      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+        <Button color="cyan">Cyan Fill</Button>
+        <Button color="cyan" outline>Cyan Outline</Button>
+        <Button color="cyan" rounded>Cyan Rounded</Button>
+      </div>
+    </div>
+
+    {/* Red 主题 */}
+    <div>
+      <h4 style={{ marginBottom: '8px' }}>Red 主题</h4>
+      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+        <Button color="red">Red Fill</Button>
+        <Button color="red" outline>Red Outline</Button>
+        <Button color="red" rounded>Red Rounded</Button>
+        <Button variant="link" color="red">Red Link</Button>
+      </div>
+    </div>
   </div>
 );
 ```
@@ -207,7 +223,7 @@ export default () => (
 | rounded | 是否为圆角按钮 | `boolean` | `false` |
 | icon | 按钮图标 | `ReactNode` | - |
 | iconPosition | 图标位置 | `'left' \| 'right'` | `'left'` |
-| color | 颜色主题 | `'cyan'` | - |
+| color | 颜色主题 | `'cyan' \| 'red'` | - |
 | solidOnPressed | 描边按钮按下时是否显示实心效果 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
 | className | 自定义类名 | `string` | - |

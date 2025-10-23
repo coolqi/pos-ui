@@ -17,3 +17,11 @@ export { default as ReportIcon } from './report';
 export { default as RoleIcon } from './role';
 export { default as TogoIcon } from './togo';
 export { default as DefaultMenuIcon } from './defaultMenu';
+
+export { default as PrevIcon } from './keyboard/prev';
+export { default as NextIcon } from './keyboard/next';
+export { default as EnterIcon } from './keyboard/enter';
+export { default as TabIcon } from './keyboard/tab';
+export { default as BackspaceIcon } from './keyboard/backspace';
+export { default as CapsLockIcon } from './keyboard/capsLock';
+export { default as HideIcon } from './keyboard/hide';

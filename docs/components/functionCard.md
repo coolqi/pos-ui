@@ -12,7 +12,10 @@ export default () => (
     name={FUNCTION_CARD_NAME.DINE_IN}
     title="堂食"
     size="lg"
-    onClick={(name) => console.log('点击了:', name)}
+    onClick={(name) => {
+      // 处理点击事件
+      console.log('点击了:', name);
+    }}
   />
 );
 ```

@@ -12,12 +12,13 @@ const DineInIcon: React.FC<IconProps> = ({
 			viewBox="0 0 64 64"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			xlinkTitle="DineInIcon"
+			aria-label="DineInIcon"
+			role="img"
 			{...props}
 		>
 			<path
 				d="M23.669 42.6869C25.1304 42.5042 26.4629 43.5406 26.6456 45.002L27.9789 55.6687L27.9997 55.9421C28.0304 57.2928 27.0334 58.474 25.6638 58.6452C24.2024 58.8279 22.8699 57.7915 22.6872 56.3301L21.3539 45.6635C21.1712 44.2021 22.2076 42.8696 23.669 42.6869Z"
-				fill="currentColor"
+				fill='currentColor'
 				fillOpacity="0.2"
 			/>
 			<path

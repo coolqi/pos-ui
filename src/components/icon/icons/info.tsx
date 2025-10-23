@@ -10,7 +10,8 @@ const InfoIcon: React.FC<IconProps> = ({
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      xlinkTitle="InfoIcon"
+      aria-label="InfoIcon"
+      role="img"
       {...props}
     >
       <path

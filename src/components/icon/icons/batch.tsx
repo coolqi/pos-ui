@@ -12,12 +12,13 @@ const BatchIcon: React.FC<IconProps> = ({
 			viewBox="0 0 64 64"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			xlinkTitle="BatchIcon"
+			aria-label="BatchIcon"
+			role="img"
 			{...props}
 		>
 			<path
 				d="M58.6673 45.3346C58.6673 49.7529 55.0856 53.3346 50.6673 53.3346H13.334C8.91571 53.3346 5.33398 49.7529 5.33398 45.3346V18.668C5.33398 14.2497 8.91571 10.668 13.334 10.668H50.6673C55.0856 10.668 58.6673 14.2497 58.6673 18.668V45.3346Z"
-				fill="currentColor"
+				fill='currentColor'
 				fillOpacity="0.2"
 			/>
 			<path

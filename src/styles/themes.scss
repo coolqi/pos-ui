@@ -15,6 +15,13 @@
 
   --pos-ui-shadow-sm: 0 2px 0 0 #{black(2%)};
   --pos-ui-shadow-light: 0 4px 8px #{black(7.5%)};
+  --pos-ui-shadow-lg: 0 9px 28px 8px #{black(5%)}, 0 3px 6px -4px #{black(12%)};
+
+  // Modal/Alert overlay
+  --pos-ui-overlay-color: #{black(30%)};
+
+  // Hover states
+  --pos-ui-bg-hover: #{black(4%)};
 
   // button
   --pos-ui-btn-primary-shadow: 0 2px 0 0 rgb(5 145 255 / 10%);
@@ -64,6 +71,13 @@
 
   --pos-ui-shadow-sm: 0 2px 0 0 #{white(2%)};
   --pos-ui-shadow-light: 0 4px 8px #{white(30%)};
+  --pos-ui-shadow-lg: 0 9px 28px 8px #{black(5%)}, 0 3px 6px -4px #{black(12%)};
+
+  // Modal/Alert overlay
+  --pos-ui-overlay-color: #{white(20%)};
+
+  // Hover states
+  --pos-ui-bg-hover: #{white(8%)};
     // button
   --pos-ui-btn-primary-shadow: 0 2px 0 0 rgb(5 145 255 / 10%);
   --pos-ui-btn-secondary-bg: rgb(77 112 255 / 10%);

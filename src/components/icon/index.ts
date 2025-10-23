@@ -1,2 +1,2 @@
-export { Icon, ICON_NAMES, SYSTEM_ICON_NAMES, ALL_ICON_NAMES, MENU_ICON_NAMES, type IconProps } from './index.tsx';
+export { Icon, ICON_NAMES, SYSTEM_ICON_NAMES, ALL_ICON_NAMES, MENU_ICON_NAMES, KEYBOARD_ICONS_NAMES, type IconProps } from './index.tsx';
 

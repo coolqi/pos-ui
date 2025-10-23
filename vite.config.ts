@@ -1,8 +1,7 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
-import path from 'path';
+import path, { resolve } from 'path';
 
 // https://vite.dev/config/
 import { fileURLToPath } from 'node:url';
@@ -41,12 +40,15 @@ export default defineConfig(({ mode }) => {
           entry: {
             index: resolve(__dirname, 'src/index.ts'),
             // 纯组件 - 支持按需导入
-            'components/button': resolve(__dirname, 'src/components/button/index.ts'),
-            'components/themeToggle': resolve(__dirname, 'src/components/themeToggle/index.ts'),
-            'components/icon': resolve(__dirname, 'src/components/icon/index.ts'),
-            'components/toast': resolve(__dirname, 'src/components/toast/index.ts'),
+        'components/button': resolve(__dirname, 'src/components/button/index.ts'),
+        'components/themeToggle': resolve(__dirname, 'src/components/themeToggle/index.ts'),
+        'components/icon': resolve(__dirname, 'src/components/icon/index.ts'),
+        'components/toast': resolve(__dirname, 'src/components/toast/index.ts'),
+        'components/modal': resolve(__dirname, 'src/components/modal/index.ts'),
+        'components/alert': resolve(__dirname, 'src/components/alert/index.ts'),
             // 业务组件 (Blocks)
             'blocks/functionCard': resolve(__dirname, 'src/blocks/functionCard/index.ts'),
+            'blocks/keyboard': resolve(__dirname, 'src/blocks/keyboard/index.ts'),
             // 主题相关
             'contexts/theme': resolve(__dirname, 'src/contexts/ThemeContext.tsx'),
             'hooks/useTheme': resolve(__dirname, 'src/hooks/useTheme.tsx'),
@@ -65,11 +67,14 @@ export default defineConfig(({ mode }) => {
             // 启用代码分割，实现真正的按需加载
                 manualChunks: (id) => {
                   // 将每个组件分割成独立的chunk
-                  if (id.includes('components/button')) return 'button';
-                  if (id.includes('components/themeToggle')) return 'themeToggle';
-                  if (id.includes('components/icon')) return 'icon';
-                  if (id.includes('components/toast')) return 'toast';
+        if (id.includes('components/button')) return 'button';
+        if (id.includes('components/themeToggle')) return 'themeToggle';
+        if (id.includes('components/icon')) return 'icon';
+        if (id.includes('components/toast')) return 'toast';
+        if (id.includes('components/modal')) return 'modal';
+        if (id.includes('components/alert')) return 'alert';
                   if (id.includes('blocks/functionCard')) return 'functionCard';
+                  if (id.includes('blocks/keyboard')) return 'keyboard';
                   if (id.includes('contexts/theme')) return 'theme';
                   if (id.includes('hooks/useTheme')) return 'useTheme';
                 }

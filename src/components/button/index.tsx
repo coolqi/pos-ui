@@ -5,8 +5,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children?: React.ReactNode;
   /** 按钮变体：primary | default | secondary | mix | dashed | text | link | danger */
   variant?: 'primary' | 'default' | 'secondary' | 'mix' | 'dashed' | 'text' | 'link' | 'danger';
-  /** 颜色主题：cyan（支付等场景） */
-  color?: 'cyan';
+  /** 颜色主题：cyan（支付等场景）| red（危险操作等场景） */
+  color?: 'cyan' | 'red';
   /** 样式类型：outline or not */
   outline?: boolean;
   /** outline 按钮按压时变为 fill 样式 */
@@ -46,8 +46,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const classNames = [
       styles.button,
-      color ? styles[`button--color-${color}`] : styles[`button--${variant}`],
-      styles[`button--${outline ? 'outline' : 'fill'}`],
+      // 对于 link 和 text variant，不添加 fill/outline 类名
+      variant !== 'link' && variant !== 'text' && styles[`button--${outline ? 'outline' : 'fill'}`],
+      color ? styles[`button--color-${color}`] : '',
+      variant ? styles[`button--${variant}`] : '',
       solidOnPressed && outline && styles['button--solid-on-pressed'],
       styles[`button--${size}`],
       rounded && styles['button--rounded'],

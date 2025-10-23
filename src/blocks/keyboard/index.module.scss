@@ -1,0 +1,404 @@
+// Global CSS Variables and Animations
+:global {
+  :root {
+    /* Modern Keyboard Colors */
+    --keyboard-bg: #d8d8d8;
+    --keyboard-shadow: rgb(0 0 0 / 10%);
+    --key-bg: #fff;
+    --key-text: #000;
+    --key-border: transparent;
+    --key-shadow: #00000005;
+    --key-hover: #0000000A;
+    --key-active: #00000026;
+    --function-key-bg: #bfbfbf;
+    --function-key-text: #fff;
+    --function-key-hover: #FFFFFF4D;
+    --function-key-active: #00000059;
+    --confirm-bg: #134CEB;
+    --confirm-hover: #3b78e7;
+    --confirm-active: #0632C4;
+    --confirm-text: #fff;
+  }
+
+  [data-theme="dark"] {
+    --keyboard-bg: #1c1c1e;
+    --key-bg: #2c2c2e;
+    --key-text: #fff;
+    --key-shadow: rgb(0 0 0 / 30%);
+    --key-hover: #3a3a3c;
+    --key-active: #48484a;
+    --function-key-bg: #48484a;
+    --function-key-text: #fff;
+    --function-key-hover: #525254;
+    --function-key-active: #5a5a5c;
+    --confirm-bg: #0a84ff;
+    --confirm-hover: #06c;
+    --confirm-active: #049;
+  }
+
+  /* Smooth Animation */
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Active States */
+  .keyboard.capsActive .simple-keyboard .hg-button.hg-button-caps {
+    background-color: var(--confirm-bg) !important;
+    color: var(--confirm-text) !important;
+  }
+}
+
+// Main keyboard container
+.virtualKeyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--keyboard-bg);
+  z-index: 1001;
+  padding: 16px;
+  box-shadow: 0 -2px 10px var(--keyboard-shadow);
+  animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.numOnly,
+  &.numeric {
+    .keyboardContainer {
+      width: 884px;
+
+      :global {
+        .simple-keyboard {
+          .hg-button {
+            width: 160px !important;
+            max-width: 160px !important;
+
+            &.hg-button-bksp {
+              width: 168px !important;
+              max-width: 168px !important;
+            }
+
+            &.hg-button-confirm {
+              width: 168px !important;
+              max-width: 168px !important;
+            }
+          }
+
+          .hg-row:nth-child(2) {
+            padding-right: 172px !important;
+          }
+
+          .hg-row:nth-child(3) {
+            padding-right: 180px !important;
+          }
+
+          .hg-row:nth-child(4) {
+            padding-right: 180px !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.numOnly {
+    .keyboardContainer {
+      .rightButtons {
+        .globeButton {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+  .globeText {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+.keyboardContainer {
+  max-width: 1288px;
+  margin: 0 auto;
+  display: flex;
+  gap: 36px;
+  justify-content: center;
+
+  // Global styles for third-party components
+  :global {
+    .hg-theme-default .hg-row .hg-button:not(:last-child) {
+      margin-right: 8px !important;
+    }
+
+    /* Simple Keyboard Overrides */
+    .simple-keyboard {
+      background-color: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+
+      .hg-button {
+        background-color: var(--key-bg) !important;
+        border: none !important;
+        color: var(--key-text) !important;
+        font-size: 30px !important;
+        font-weight: 600 !important;
+        border-radius: 8px !important;
+        line-height: 64px !important;
+        height: 80px !important;
+        min-width: 80px !important;
+        max-width: none !important;
+        transition: all 0.12s ease-out !important;
+        cursor: pointer !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        &.hg-standardBtn {
+          max-width: 80px !important;
+        }
+
+        &:hover:not(:disabled) {
+          background-color: var(--key-hover) !important;
+          transform: translateY(-1px) !important;
+          box-shadow: 0 3px 6px var(--key-shadow) !important;
+        }
+
+        &:active:not(:disabled) {
+          background-color: var(--key-active) !important;
+          transform: scale(0.95) !important;
+          box-shadow: 0 1px 2px var(--key-shadow) !important;
+        }
+
+        // Icons
+        svg {
+          width: 32px !important;
+          height: 32px !important;
+          color: inherit !important;
+        }
+      }
+
+      /* Function Keys */
+      .hg-button.hg-functionBtn {
+        background-color: var(--function-key-bg) !important;
+        color: var(--function-key-text) !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+
+        &:hover {
+          background-color: var(--key-hover) !important;
+        }
+
+        &:active {
+          background-color: var(--function-key-active) !important;
+        }
+      }
+
+      /* Confirm Button - Blue and Prominent */
+      .hg-button.hg-button-confirm {
+        background-color: var(--confirm-bg) !important;
+        color: var(--confirm-text) !important;
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        width: 168px !important;
+        height: 264px !important;
+        border-radius: 8px !important;
+        position: relative !important;
+        z-index: 5 !important;
+
+        &:hover {
+          background-color: var(--confirm-hover) !important;
+          transform: translateY(-1px) !important;
+          box-shadow: 0 4px 12px rgb(66 133 244 / 40%) !important;
+        }
+
+        &:active {
+          background-color: var(--confirm-active) !important;
+          transform: scale(0.95) !important;
+          box-shadow: 0 2px 6px rgb(66 133 244 / 30%) !important;
+        }
+      }
+
+      /* Space Button */
+      .hg-button.hg-button-space {
+        min-width: 280px !important;
+        background-color: var(--key-bg) !important;
+      }
+
+      /* Backspace Button */
+      .hg-button.hg-button-bksp {
+        background-color: var(--key-bg) !important;
+        color: var(--key-text) !important;
+        font-size: 30px !important;
+        font-weight: 600 !important;
+        max-width: 168px !important;
+
+        svg {
+          color: var(--key-text) !important;
+          width: 32px !important;
+          height: 32px !important;
+          display: block !important;
+        }
+
+        &:hover {
+          background-color: var(--key-hover) !important;
+        }
+      }
+
+      /* Caps Lock Button */
+      .hg-button.hg-button-caps {
+        max-width: 80px !important;
+        background-color: var(--function-key-bg) !important;
+        color: var(--function-key-text) !important;
+
+        svg {
+          color: var(--key-text) !important;
+          width: 32px !important;
+          height: 32px !important;
+          display: block !important;
+        }
+      }
+
+      /* 123 Button */
+      .hg-functionBtn.hg-button-comma,
+      .hg-functionBtn.hg-button-dot,
+      .hg-functionBtn.hg-button-00,
+      .hg-functionBtn.hg-button-abc,
+      .hg-functionBtn.hg-button-clear,
+      .hg-functionBtn.hg-button-123 {
+        max-width: 80px !important;
+        width: 80px;
+        background-color: var(--function-key-bg) !important;
+        font-size: 30px !important;
+        font-weight: 600 !important;
+        color: var(--key-text) !important;
+      }
+
+      /* Row Layout */
+      .hg-row {
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 12px !important;
+        align-items: stretch !important;
+        gap: 4px !important;
+
+        &:last-child {
+          margin-bottom: 0 !important;
+        }
+
+        /* Special layout for confirm button spanning rows */
+        &:nth-child(2) {
+          position: relative !important;
+          padding-right: 168px !important;
+
+          .hg-button-confirm {
+            position: absolute !important;
+            right: 0 !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            font-size: 30px !important;
+            font-weight: 500 !important;
+          }
+        }
+
+        &:nth-child(3) {
+          padding-right: 180px !important;
+        }
+
+        &:nth-child(4) {
+          padding-right: 180px !important;
+        }
+      }
+
+      /* 半字符空格 - 在 'a' 键左边 */
+      .hg-button.hg-button-\/\/ {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        cursor: default !important;
+        min-width: 16px !important;
+        max-width: 16px !important;
+        pointer-events: none !important;
+        margin: 2px !important;
+
+        &:hover {
+          background-color: transparent !important;
+          transform: none !important;
+          box-shadow: none !important;
+        }
+
+        &:active {
+          background-color: transparent !important;
+          transform: none !important;
+          box-shadow: none !important;
+        }
+      }
+    }
+
+    .mainKeyboard {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+  }
+      
+  .rightButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 160px;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  
+  .rightButton {
+    background-color: var(--function-key-bg);
+    border: none;
+    color: var(--key-text);
+    border-radius: 8px;
+    height: 80px;
+    min-height: 50px;
+    width: 160px;
+    transition: all 0.15s cubic-bezier(0.4, 0.0, 0.2, 1);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  
+    &:hover {
+      background-color: var(--key-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 6px var(--key-shadow);
+    }
+  
+    &:active {
+      background-color: var(--key-active);
+      transform: scale(0.95);
+      box-shadow: 0 1px 2px var(--key-shadow);
+    }
+  
+    svg {
+      width: 32px !important;
+      height: 32px !important;
+      color: inherit !important;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1288px;
+    gap: 48px;
+  }
+}
+
+

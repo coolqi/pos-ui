@@ -1,0 +1,122 @@
+// Modal 遮罩层
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--pos-ui-overlay-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--pos-ui-modal-z-index);
+  animation: fadeIn 0.2s ease-out;
+}
+
+// Modal 主体
+.modal {
+  background: var(--pos-ui-bg-color);
+  border-radius: var(--pos-ui-border-radius-sm);
+  box-shadow: 0 9px 28px 8px #{black(5%)},
+  0 3px 6px -4px #{black(12%)};
+  max-height: 90vh;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.2s ease-out;
+  outline: none;
+  padding: 32px;
+}
+
+// 尺寸变体
+.modal--small {
+  width: 800px;
+  min-height: 200px;
+}
+
+.modal--medium {
+  width: 1000px;
+  min-height: 300px;
+}
+
+.modal--large {
+  width: 1200px;
+  min-height: 400px;
+}
+
+// 居中显示
+.modal--centered {
+  margin: auto;
+}
+
+// Header 样式
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.headerCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.title {
+  margin: 0;
+  color: var(--pos-ui-text-primary);
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 600;
+}
+
+// Content 样式
+.content {
+  flex: 1;
+  overflow-y: auto;
+  color: var(--pos-ui-text-primary);
+  padding-top: 24px;
+}
+
+// Footer 样式
+.footer {
+  padding-top: 24px;
+  flex-shrink: 0;
+}
+
+
+// 动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+

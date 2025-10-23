@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ThemeToggle from './index';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { useState } from 'react';
@@ -79,23 +79,6 @@ export const AllVariants: Story = {
             </div>
           </div>
         </div>
-      </div>
-    </ThemeProvider>
-  ),
-};
-
-// 交互式控制
-export const Interactive: Story = {
-  render: () => (
-    <ThemeProvider>
-      <div style={{ padding: '20px' }}>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>
-          主题切换器
-        </h3>
-        <p style={{ marginBottom: '16px', fontSize: '14px', color: 'var(--pos-ui-text-secondary)' }}>
-          点击切换全局主题
-        </p>
-        <ThemeToggle />
       </div>
     </ThemeProvider>
   ),

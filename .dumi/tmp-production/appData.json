@@ -38,10 +38,25 @@
         "import": "./dist/components/toast.es.js",
         "require": "./dist/components/toast.cjs.js"
       },
+      "./components/modal": {
+        "types": "./dist/components/modal.d.ts",
+        "import": "./dist/components/modal.es.js",
+        "require": "./dist/components/modal.cjs.js"
+      },
+      "./components/alert": {
+        "types": "./dist/components/alert.d.ts",
+        "import": "./dist/components/alert.es.js",
+        "require": "./dist/components/alert.cjs.js"
+      },
       "./blocks/functionCard": {
         "types": "./dist/blocks/functionCard.d.ts",
         "import": "./dist/blocks/functionCard.es.js",
         "require": "./dist/blocks/functionCard.cjs.js"
+      },
+      "./blocks/keyboard": {
+        "types": "./dist/blocks/keyboard.d.ts",
+        "import": "./dist/blocks/keyboard.es.js",
+        "require": "./dist/blocks/keyboard.cjs.js"
       },
       "./contexts/theme": {
         "types": "./dist/contexts/theme.d.ts",
@@ -64,6 +79,9 @@
       "build": "tsc -b && vite build",
       "build:lib": "vite build --mode library",
       "lint": "eslint .",
+      "lint:fix": "eslint . --fix",
+      "lint:check": "eslint . --max-warnings 0",
+      "type-check": "tsc --noEmit",
       "preview": "vite preview",
       "storybook": "storybook dev -p 6006",
       "build-storybook": "storybook build",
@@ -71,7 +89,8 @@
       "docs:build": "dumi build",
       "docs:preview": "dumi preview",
       "docs:deploy": "pnpm docs:build && vercel --prod",
-      "prepublishOnly": "pnpm run build:lib"
+      "prepublishOnly": "pnpm run build:lib",
+      "pre-commit": "pnpm run lint:check && pnpm run type-check"
     },
     "peerDependencies": {
       "react": ">=18.0.0",
@@ -99,7 +118,10 @@
       "eslint-plugin-react-refresh": "^0.4.22",
       "eslint-plugin-storybook": "^9.1.10",
       "globals": "^16.4.0",
+      "i18n": "^0.15.2",
+      "i18next": "^25.6.0",
       "playwright": "^1.56.0",
+      "react-simple-keyboard": "^3.8.130",
       "sass": "^1.93.2",
       "storybook": "^9.1.10",
       "typescript": "~5.9.3",
@@ -115,7 +137,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 2
       },
       "enableBy": "register",
       "type": "preset",
@@ -128,7 +150,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 451
+        "register": 16
       },
       "enableBy": "register",
       "type": "preset",
@@ -141,7 +163,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 46
+        "register": 6
       },
       "enableBy": "register",
       "type": "preset",
@@ -155,10 +177,10 @@
       "time": {
         "hooks": {
           "onStart": [
-            5
+            0
           ]
         },
-        "register": 21
+        "register": 7
       },
       "enableBy": "register",
       "type": "plugin",
@@ -175,7 +197,7 @@
             0
           ]
         },
-        "register": 146
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -188,7 +210,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 16
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -202,10 +224,10 @@
       "time": {
         "hooks": {
           "modifyAppData": [
-            25
+            323
           ]
         },
-        "register": 290
+        "register": 33
       },
       "enableBy": "register",
       "type": "plugin",
@@ -218,7 +240,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -235,10 +257,10 @@
             0
           ],
           "onCheck": [
-            1
+            0
           ]
         },
-        "register": 4
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -255,7 +277,7 @@
             0
           ]
         },
-        "register": 5
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -268,7 +290,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -285,7 +307,7 @@
             0
           ]
         },
-        "register": 25
+        "register": 17
       },
       "enableBy": "register",
       "type": "plugin",
@@ -313,7 +335,7 @@
       "enableBy": "register",
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 0
       }
     },
     "virtual: config-scripts": {
@@ -1137,7 +1159,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 159
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1154,7 +1176,7 @@
             1
           ]
         },
-        "register": 8
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1167,7 +1189,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1180,7 +1202,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 996
+        "register": 114
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1193,7 +1215,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 279
+        "register": 69
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1210,7 +1232,7 @@
             0
           ]
         },
-        "register": 63
+        "register": 4
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1227,7 +1249,7 @@
             0
           ]
         },
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1240,7 +1262,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1253,7 +1275,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 23
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1266,7 +1288,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 344
+        "register": 47
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/mock/mock.js",
@@ -1278,7 +1300,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1316,7 +1338,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1330,10 +1352,10 @@
       "time": {
         "hooks": {
           "modifyConfig": [
-            2
+            3
           ]
         },
-        "register": 5
+        "register": 2
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill.js",
@@ -1358,7 +1380,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1371,7 +1393,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 0
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1410,7 +1432,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 15
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1423,7 +1445,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1436,7 +1458,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 1
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps.js",
@@ -1448,7 +1470,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1461,7 +1483,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1474,7 +1496,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 4
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1487,7 +1509,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 4
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1513,7 +1535,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 24
+        "register": 10
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute.js",
@@ -1525,7 +1547,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 79
+        "register": 33
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1538,7 +1560,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 1
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/test/test.js",
@@ -1550,7 +1572,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 2
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent.js",
@@ -1562,7 +1584,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 1
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1588,7 +1610,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 1
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/webpack/webpack.js",
@@ -1601,10 +1623,10 @@
       "time": {
         "hooks": {
           "addOnDemandDeps": [
-            0
+            1
           ]
         },
-        "register": 3
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1617,7 +1639,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 5
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/ui/ui.js",
@@ -1654,7 +1676,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 2
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian.js",
@@ -1666,7 +1688,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 127
+        "register": 37
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad.js",
@@ -1678,7 +1700,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 2
       },
       "enableBy": "config",
       "type": "plugin",
@@ -1691,7 +1713,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1704,7 +1726,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 8
+        "register": 4
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1717,7 +1739,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 208
+        "register": 53
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1730,7 +1752,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 124
+        "register": 56
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/@umijs+preset-umi@4.5.2_@types+node@24.7.1_@types+react@19.2.2_@types+webpack@5.28.5_es_416fcda133526cb806fbe8179378385f/node_modules/@umijs/preset-umi/dist/commands/dev/dev.js",
@@ -1742,7 +1764,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1755,7 +1777,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1768,7 +1790,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 0
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1807,7 +1829,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 6
+        "register": 3
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1820,7 +1842,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 0
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1846,7 +1868,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 12
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1859,7 +1881,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1872,7 +1894,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1885,7 +1907,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 0
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1937,7 +1959,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 0
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1976,7 +1998,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 5
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -1989,7 +2011,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 4
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2028,7 +2050,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 3
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2132,10 +2154,10 @@
       "time": {
         "hooks": {
           "modifyConfig": [
-            4
+            2
           ]
         },
-        "register": 9
+        "register": 1
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.28.4_@swc+helpers@0.5.15_@types+node@24.7.1_@types+react@19.2_b4da66a71792359bcf860565c42aee78/node_modules/dumi/dist/features/autoAlias.js",
@@ -2154,10 +2176,10 @@
             0
           ],
           "onCheck": [
-            3
+            2
           ]
         },
-        "register": 7
+        "register": 4
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2172,7 +2194,7 @@
       },
       "time": {
         "hooks": {},
-        "register": 9
+        "register": 1
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.28.4_@swc+helpers@0.5.15_@types+node@24.7.1_@types+react@19.2_b4da66a71792359bcf860565c42aee78/node_modules/dumi/compiled/@umijs/plugins/index.js",
@@ -2184,7 +2206,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 11
+        "register": 2
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2201,7 +2223,7 @@
             0
           ]
         },
-        "register": 7
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2220,7 +2242,7 @@
             1
           ]
         },
-        "register": 288
+        "register": 26
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2240,10 +2262,10 @@
             0
           ],
           "modifyRoutes": [
-            10
+            7
           ]
         },
-        "register": 9
+        "register": 6
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2257,10 +2279,10 @@
       "time": {
         "hooks": {
           "modifyRoutes": [
-            1
+            0
           ]
         },
-        "register": 3
+        "register": 4
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2298,10 +2320,10 @@
           ],
           "modifyAppData": [
             1,
-            6
+            4
           ]
         },
-        "register": 164
+        "register": 50
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2329,7 +2351,7 @@
             0
           ]
         },
-        "register": 3
+        "register": 1
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2342,7 +2364,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 7
+        "register": 3
       },
       "enableBy": "config",
       "type": "plugin",
@@ -2355,7 +2377,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 1
+        "register": 0
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.28.4_@swc+helpers@0.5.15_@types+node@24.7.1_@types+react@19.2_b4da66a71792359bcf860565c42aee78/node_modules/dumi/dist/features/assets.js",
@@ -2383,7 +2405,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 22
+        "register": 21
       },
       "type": "plugin",
       "path": "/Users/zhangqi/Desktop/pos-ui/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.28.4_@swc+helpers@0.5.15_@types+node@24.7.1_@types+react@19.2_b4da66a71792359bcf860565c42aee78/node_modules/dumi/dist/features/sitemap.js",
@@ -2408,7 +2430,7 @@
       "config": {},
       "time": {
         "hooks": {},
-        "register": 2
+        "register": 5
       },
       "enableBy": "register",
       "type": "plugin",
@@ -2736,6 +2758,13 @@
       "file": "/Users/zhangqi/Desktop/pos-ui/docs/components/functionCard.md",
       "absPath": "/components/function-card"
     },
+    "docs/components/keyboard": {
+      "path": "components/keyboard",
+      "id": "docs/components/keyboard",
+      "parentId": "DocLayout",
+      "file": "/Users/zhangqi/Desktop/pos-ui/docs/components/keyboard.md",
+      "absPath": "/components/keyboard"
+    },
     "docs/guide/installation": {
       "path": "guide/installation",
       "id": "docs/guide/installation",
@@ -2749,6 +2778,20 @@
       "parentId": "DocLayout",
       "file": "/Users/zhangqi/Desktop/pos-ui/docs/components/button.md",
       "absPath": "/components/button"
+    },
+    "docs/components/alert": {
+      "path": "components/alert",
+      "id": "docs/components/alert",
+      "parentId": "DocLayout",
+      "file": "/Users/zhangqi/Desktop/pos-ui/docs/components/alert.md",
+      "absPath": "/components/alert"
+    },
+    "docs/components/modal": {
+      "path": "components/modal",
+      "id": "docs/components/modal",
+      "parentId": "DocLayout",
+      "file": "/Users/zhangqi/Desktop/pos-ui/docs/components/modal.md",
+      "absPath": "/components/modal"
     },
     "docs/components/toast": {
       "path": "components/toast",

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FunctionCard } from './index';
 import { FUNCTION_CARD_NAME } from '@/types';
 
@@ -48,20 +48,20 @@ export const AllVariants: Story = {
             name={FUNCTION_CARD_NAME.DINE_IN} 
             title="堂食" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.TOGO} 
             title="外带" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.ADMIN} 
             title="管理" 
             size="lg"
             disabled
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
         </div>
       </div>
@@ -79,37 +79,37 @@ export const AllVariants: Story = {
             name={FUNCTION_CARD_NAME.DINE_IN} 
             title="堂食" 
             size="sm"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.TOGO} 
             title="外带" 
             size="sm"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.PICKUP} 
             title="自取" 
             size="sm"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.DELIVERY} 
             title="外卖" 
             size="sm"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.RECALL} 
             title="找单" 
             size="sm"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.OPEN_DRAW} 
             title="钱箱" 
             size="sm"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
         </div>
       </div>
@@ -126,55 +126,55 @@ export const AllVariants: Story = {
             name={FUNCTION_CARD_NAME.DINE_IN} 
             title="堂食" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.TOGO} 
             title="外带" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.PICKUP} 
             title="自取" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.DELIVERY} 
             title="外卖" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.RECALL} 
             title="召回" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.OPEN_DRAW} 
             title="开抽屉" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.REPORT} 
             title="报表" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.ADMIN} 
             title="管理" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
           <FunctionCard 
             name={FUNCTION_CARD_NAME.BATCH} 
             title="批量" 
             size="lg"
-            onClick={(name) => console.log('Clicked:', name)}
+            onClick={(_name) => {/* Handle click */}}
           />
         </div>
       </div>

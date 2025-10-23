@@ -213,11 +213,14 @@ POS UI 的主题系统基于 CSS 变量，你可以通过覆盖 CSS 变量来自
 --pos-ui-gap-xl: 32px;
 
 /* 圆角 */
---pos-ui-border-radius-sm: 4px;
---pos-ui-border-radius-md: 8px;
---pos-ui-border-radius-lg: 12px;
---pos-ui-border-radius-xl: 16px;
---pos-ui-border-radius-2xl: 24px;
+--pos-ui-border-radius-xs: 4px;
+--pos-ui-border-radius-sm: 8px;
+--pos-ui-border-radius-base: 12px;
+--pos-ui-border-radius-md: 16px;
+--pos-ui-border-radius-lg: 24px;
+--pos-ui-border-radius-xl: 32px;
+--pos-ui-border-radius-2xl: 9999px;
+--pos-ui-border-radius-round: 50%;
 
 /* 阴影 */
 --pos-ui-shadow-sm: 0 2px 0 0 rgba(0, 0, 0, 0.02);

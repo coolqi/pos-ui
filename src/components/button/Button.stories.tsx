@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button, IconButton } from './index';
 
 const meta = {
@@ -42,109 +42,63 @@ const TrashIcon = () => (
 // 所有变体展示
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', padding: '20px' }}>
-      {/* Fill 样式 */}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '20px' }}>
+      {/* 基础变体 */}
       <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Fill Style</h3>
+        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>基础变体</h3>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="default">Default</Button>
           <Button variant="danger">Danger</Button>
           <Button variant="mix">Mix</Button>
+        </div>
+      </div>
+
+      {/* 样式类型 */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>样式类型</h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <Button variant="primary">Fill</Button>
+          <Button variant="primary" outline>Outline</Button>
+          <Button variant="link">Link</Button>
+          <Button variant="text">Text</Button>
+        </div>
+      </div>
+
+      {/* 尺寸和状态 */}
+      <div>
+        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>尺寸和状态</h3>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <Button variant="primary" size="small">Small</Button>
+          <Button variant="primary" size="medium">Medium</Button>
+          <Button variant="primary" size="large">Large</Button>
           <Button variant="primary" disabled>Disabled</Button>
         </div>
       </div>
 
-      {/* Outline 样式 */}
+      {/* 特殊功能 */}
       <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Outline Style</h3>
+        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>特殊功能</h3>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button variant="primary" outline>Primary</Button>
-          <Button variant="secondary" outline>Secondary</Button>
-          <Button variant="default" outline>Default</Button>
-          <Button variant="danger" outline>Danger</Button>
-          <Button variant="mix" outline>Mix</Button>
-          <Button variant="primary" outline disabled>Disabled</Button>
-        </div>
-      </div>
-
-      {/* 尺寸 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Sizes</h3>
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <Button variant="primary" size="small">Small</Button>
-          <Button variant="primary" size="medium">Medium</Button>
-          <Button variant="primary" size="large">Large</Button>
-        </div>
-      </div>
-
-      {/* 圆角按钮 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Rounded Buttons</h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button variant="primary" rounded>Primary</Button>
-          <Button variant="secondary" rounded>Secondary</Button>
-          <Button variant="default" rounded>Default</Button>
-          <Button variant="danger" rounded>Danger</Button>
-        </div>
-      </div>
-
-      {/* 带图标的按钮 */}
-      <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>With Icons</h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button variant="primary" icon={<HeartIcon />}>Like</Button>
-          <Button variant="secondary" icon={<SearchIcon />}>Search</Button>
-          <Button variant="default" icon={<PlusIcon />}>Add</Button>
-          <Button variant="danger" icon={<TrashIcon />}>Delete</Button>
+          <Button variant="primary" rounded>Rounded</Button>
+          <Button variant="primary" outline solidOnPressed>Solid On Pressed</Button>
+          <Button color="cyan">Cyan</Button>
+          <Button color="red">Red</Button>
+          <Button variant="link" color="red">Red Link</Button>
         </div>
       </div>
 
       {/* 图标按钮 */}
       <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Icon Buttons</h3>
+        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>图标按钮</h3>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <IconButton variant="primary" icon={<HeartIcon />} aria-label="Like" />
-          <IconButton variant="secondary" icon={<SearchIcon />} aria-label="Search" />
-          <IconButton variant="default" icon={<PlusIcon />} aria-label="Add" />
+          <Button variant="primary" icon={<HeartIcon />}>Like</Button>
+          <Button variant="secondary" icon={<SearchIcon />}>Search</Button>
+          <IconButton variant="primary" icon={<PlusIcon />} aria-label="Add" />
           <IconButton variant="danger" icon={<TrashIcon />} aria-label="Delete" />
-        </div>
-      </div>
-
-      {/* 颜色主题 - Cyan */}
-      <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Color Theme - Cyan</h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button color="cyan">Cyan Fill</Button>
-          <Button color="cyan" outline>Cyan Outline</Button>
-          <Button color="cyan" rounded>Cyan Rounded</Button>
-        </div>
-      </div>
-
-      {/* Outline - Solid on Pressed */}
-      <div>
-        <h3 style={{ marginBottom: '16px', fontSize: '18px', fontWeight: '600' }}>Outline - Solid on Pressed</h3>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button variant="primary" outline solidOnPressed>Primary</Button>
-          <Button variant="secondary" outline solidOnPressed>Secondary</Button>
-          <Button variant="default" outline solidOnPressed>Default</Button>
-          <Button variant="danger" outline solidOnPressed>Danger</Button>
-          <Button color="cyan" outline solidOnPressed>Cyan</Button>
         </div>
       </div>
     </div>
   ),
-};
-
-// 交互式控制
-export const Interactive: Story = {
-  args: {
-    variant: 'primary',
-    size: 'medium',
-    outline: false,
-    rounded: false,
-    disabled: false,
-    children: 'Button',
-  },
 };

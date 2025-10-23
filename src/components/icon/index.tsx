@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
-import {SuccessIcon, ErrorIcon, WarningIcon, InfoIcon, DarkIcon, LightIcon, CloseIcon, AdminIcon, BatchIcon, DeliveryIcon, DineInIcon, DrawerIcon, PickupIcon, RecallIcon, ReportIcon, RoleIcon, TogoIcon, DefaultMenuIcon} from './icons';
+import {SuccessIcon, ErrorIcon, WarningIcon, InfoIcon, DarkIcon, LightIcon, CloseIcon, AdminIcon, BatchIcon, DeliveryIcon, DineInIcon, DrawerIcon, PickupIcon, RecallIcon, ReportIcon, RoleIcon, TogoIcon, DefaultMenuIcon, BackspaceIcon, CapsLockIcon, EnterIcon, HideIcon, NextIcon, PrevIcon, TabIcon} from './icons';
 export interface IconProps extends React.SVGAttributes<SVGElement> {
   /** 图标名称 */
   name?: string;
@@ -47,6 +47,8 @@ const SYSTEM_ICONS = ['success', 'error', 'warning', 'info', 'dark', 'light', 'c
 
 const MENU_ICONS = ['admin', 'batch', 'togo', 'delivery', 'dineIn', 'drawer', 'pickup', 'recall', 'report', 'defaultMenu'];
 
+const KEYBOARD_ICONS = ['backspace', 'enter', 'capsLock', 'tab', 'hide', 'prev'];
+
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
   (
     props,
@@ -76,7 +78,7 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
     const iconStyle: React.CSSProperties = {
       width: typeof size === 'number' ? `${size}px` : size,
       height: typeof size === 'number' ? `${size}px` : size,
-      color: color,
+      color,
       ...style,
     };
 
@@ -117,6 +119,20 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
         return <TogoIcon className={classNames} style={iconStyle} {...rest} />;
       case 'defaultMenu':
         return <DefaultMenuIcon className={classNames} style={iconStyle} {...rest} />;
+      case 'backspace':
+        return <BackspaceIcon className={classNames} style={iconStyle} {...rest} />;
+      case 'enter':
+        return <EnterIcon className={classNames} style={iconStyle} {...rest} />;
+      case 'capsLock':
+        return <CapsLockIcon className={classNames} style={iconStyle} {...rest} />;
+      case 'tab':
+        return <TabIcon className={classNames} style={iconStyle} {...rest} />;
+      case 'hide':
+        return <HideIcon className={classNames} style={iconStyle} {...rest} />;
+      case 'prev':
+        return <PrevIcon className={classNames} style={iconStyle} {...rest} />;
+      case 'next':
+        return <NextIcon className={classNames} style={iconStyle} {...rest} />;
       default:
         break;
     }
@@ -151,4 +167,5 @@ Icon.displayName = 'Icon';
 export const ICON_NAMES = Object.keys(ICONS) as Array<keyof typeof ICONS>;
 export const SYSTEM_ICON_NAMES = SYSTEM_ICONS as Array<string>;
 export const MENU_ICON_NAMES = MENU_ICONS;
-export const ALL_ICON_NAMES = [...SYSTEM_ICONS, ...ICON_NAMES, ...MENU_ICONS];
+export const KEYBOARD_ICONS_NAMES = KEYBOARD_ICONS;
+export const ALL_ICON_NAMES = [...SYSTEM_ICONS, ...ICON_NAMES, ...MENU_ICONS, ...KEYBOARD_ICONS];

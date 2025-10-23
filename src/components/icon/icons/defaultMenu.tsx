@@ -12,12 +12,13 @@ const DefaultMenuIcon: React.FC<IconProps> = ({
 			viewBox="0 0 64 64"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			xlinkTitle="DefaultMenuIcon"
+			aria-label="DefaultMenuIcon"
+			role="img"
 			{...props}
 		>
 			<path
 				d="M52.1415 29.6141C53.4587 28.9555 55.0609 29.4895 55.7196 30.8068C56.3782 32.1241 55.8442 33.7263 54.5269 34.3849L33.1935 45.0516C32.4428 45.427 31.5589 45.427 30.8081 45.0516L9.47479 34.3849C8.15752 33.7263 7.62345 32.1241 8.28208 30.8068C8.94072 29.4895 10.5429 28.9555 11.8602 29.6141L32.0008 39.6844L52.1415 29.6141Z"
-				fill="currentColor"
+				fill='currentColor'
 				fillOpacity="0.88"
 			/>
 			<path

@@ -12,7 +12,8 @@ const LightIcon: React.FC<IconProps> = ({
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			xlinkTitle="LightIcon"
+			aria-label="LightIcon"
+			role="img"
 			{...props}
 		>
 			<path

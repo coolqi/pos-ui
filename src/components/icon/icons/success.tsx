@@ -10,7 +10,8 @@ const SuccessIcon: React.FC<IconProps> = ({
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      xlinkHref="SuccessIcon"
+      aria-label="SuccessIcon"
+      role="img"
       {...props}
     >
       <path

@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Toast, toast } from './index';
-import { useState } from 'react';
 
 const meta = {
   title: 'Components/Toast',
@@ -101,45 +100,6 @@ export const ImperativeAPI: Story = {
             Show Info Toast
           </button>
         </div>
-      </div>
-    );
-  },
-};
-
-// 组件式 API 演示
-export const ComponentAPI: Story = {
-  render: () => {
-    const [visible, setVisible] = useState(false);
-    
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px' }}>
-        <h3>组件式 API - 声明式使用</h3>
-        <p style={{ color: 'var(--pos-ui-text-secondary)', marginBottom: '16px' }}>
-          使用 Toast 组件进行声明式渲染
-        </p>
-
-        <button
-          style={{
-            padding: '8px 16px',
-            border: '1px solid var(--pos-ui-border-color)',
-            borderRadius: '6px',
-            background: 'var(--pos-ui-primary-color)',
-            color: 'white',
-            cursor: 'pointer',
-            marginBottom: '16px',
-          }}
-          onClick={() => setVisible(!visible)}
-        >
-          {visible ? 'Hide' : 'Show'} Toast
-        </button>
-
-        <Toast
-          visible={visible}
-          type="info"
-          title="Component Toast"
-          content="This is a component-based toast"
-          onClose={() => setVisible(false)}
-        />
       </div>
     );
   },

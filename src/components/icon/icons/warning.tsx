@@ -10,6 +10,8 @@ const WarningIcon: React.FC<IconProps> = ({
       height={size}
       viewBox="0 0 24 24"
       fill="none"
+      aria-label="WarningIcon"
+      role="img"
       {...props}
     >
       <path

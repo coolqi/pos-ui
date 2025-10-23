@@ -1,0 +1,166 @@
+// Alert 遮罩层
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--pos-ui-overlay-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--pos-ui-modal-z-index);
+  animation: fadeIn 0.2s ease-out;
+  padding: 20px;
+}
+
+// Alert 主体
+.alert {
+  background: var(--pos-ui-bg-color);
+  border-radius: var(--pos-ui-border-radius-md);
+  box-shadow: var(--pos-ui-shadow-lg);
+  max-height: 90vh;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.2s ease-out;
+  outline: none;
+}
+
+// 尺寸变体
+.alert--small {
+  width: 400px;
+  min-height: 200px;
+}
+
+.alert--medium {
+  width: 500px;
+  min-height: 200px;
+}
+
+.alert--large {
+  width: 600px;
+  min-height: 400px;
+}
+
+// 居中显示
+.alert--centered {
+  margin: auto;
+}
+
+// 状态变体
+.alert--error {
+  .statusIcon {
+    color: var(--pos-ui-danger-color);
+  }
+}
+
+.alert--info {
+  .statusIcon {
+    color: var(--pos-ui-primary-color);
+  }
+}
+
+.alert--success {
+  .statusIcon {
+    color: var(--pos-ui-success-color);
+  }
+}
+
+.alert--warning {
+  .statusIcon {
+    color: var(--pos-ui-warning-color);
+  }
+}
+
+// Header 样式
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 0 20px;
+  flex-shrink: 0;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.statusIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--pos-ui-font-size-xl);
+  font-weight: 600;
+  color: var(--pos-ui-text-primary);
+  line-height: 26px;
+}
+
+.content {
+  padding: 8px 20px 24px 20px;
+  flex: 1;
+  overflow-y: auto;
+  color: var(--pos-ui-text-primary);
+}
+
+// Footer 样式
+.footer {
+  padding: 16px 24px 24px 24px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.defaultButtons {
+  display: flex;
+  gap: var(--pos-ui-gap-sm);
+  justify-content: flex-end;
+}
+
+// 动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// 深色主题适配
+:global(.dark) {
+  .alert {
+    background: var(--pos-ui-bg-color);
+    border: 1px solid var(--pos-ui-border-color);
+  }
+
+  .header {
+    border-bottom-color: var(--pos-ui-border-color);
+  }
+
+  .footer {
+    border-top-color: var(--pos-ui-border-color);
+  }
+}
